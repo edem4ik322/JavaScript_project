@@ -1,17 +1,18 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
+
 var tvSchema = new Schema({
 title: String,
 nick: {
-type: String,
-unique: true,
-required: true
+    type: String,
+    unique: true,
+    required: true
 },
 avatar: String,
 desc: String,
 created:{
-type:Date,
-default:Date.now
+    type:Date,
+    default:Date.now
 }
 })
-module.exports.TV = mongoose.model("TV", tvSchema)
+module.exports.TV = mongoose.model("Tv", tvSchema)
