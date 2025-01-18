@@ -15,7 +15,7 @@ router.get('/Sber-QLED-4K-UHD-65', function(req, res, next) {
   });
 });
 
-/* Страница телевизора Яндекс ТВ Станция Про с Алисой 55" */
+/* Страница телевизора Яндекс ТВ Станция Про с Алисой 55 */
 router.get('/Yandex-TV-Pro-with-Alice-55', function(req, res, next) {
   res.render('tv',{
     title: "Яндекс ТВ Станция Про с Алисой 55",
