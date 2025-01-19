@@ -7,6 +7,8 @@ var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/tv2024')
 var session = require("express-session")
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var tvsRouter = require('./routes/tvs');
@@ -24,6 +26,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var MongoStore = require('connect-mongo');
+app.use(session({
+secret: "TV",
+cookie:{maxAge:60*1000},
+proxy: true,
+resave: true,
+saveUninitialized: true,
+store: MongoStore.create({mongoUrl:
+'mongodb://localhost/tv2024'})
+}))
 
 app.use(session({
   secret: "ThreeCats",
