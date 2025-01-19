@@ -19,21 +19,17 @@
         <div class="collapse navbar-collapse"
             id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/tvs/Sber-QLED-4K-UHD-65">Sber QLED 4K UHD 6</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/tvs/Yandex-TV-Pro-with-Alice-55">Яндекс ТВ Станция Про с Алисой 55</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/tvs/Samsung-UE50CU8000UXRU">Samsung UE50CU8000UXRU</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/tvs/TCL-55-55P635-4K-LCD">TCL 55 55P635 4K LCD</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/tvs/Haier-55-Smart-TV-S3-RU">Haier 55 Smart TV S3 RU</a>
-                </li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <% if(typeof nav == 'object' && nav){
+                    nav.forEach(function(item){
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tvs/<%= item.nick %>"><%=item.title %></a>
+                    </li>
+                    <%
+                    })}
+                    %>
+                </ul>
             </ul>
         </div>
     </div>
