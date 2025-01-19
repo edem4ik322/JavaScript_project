@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Tv = require('../models/Tv').Tv;
-
+var checkAuth = require("../middlewares/checkAuth.js");
 
 /* 
 GET users listing.
@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 */
 
 /* Страница телевизоров */
-router.get("/:nick", async function(req, res, next) 
+router.get("/:nick", checkAuth, async function(req, res, next) 
 {
     var tvs = await Tv.find({nick: req.params.nick});
     console.log(tvs)
