@@ -15,4 +15,4 @@ created:{
     default:Date.now
 }
 })
-module.exports.TV = mongoose.model("Tv", tvSchema)
+module.exports.Tv = mongoose.model("Tv", tvSchema)

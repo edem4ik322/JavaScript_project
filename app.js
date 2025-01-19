@@ -4,12 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/tc2024')
+mongoose.connect('mongodb://localhost/tv2024')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var tvsRouter = require('./routes/tvs');
-
+const { title } = require('process');
 
 var app = express();
 
