@@ -29,30 +29,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var MongoStore = require('connect-mongo');
 app.use(session({
-secret: "TV",
-cookie:{maxAge:60*1000},
-proxy: true,
-resave: true,
-saveUninitialized: true,
-store: MongoStore.create({mongoUrl:
-'mongodb://localhost/tv2024'})
-}))
-
-app.use(function(req,res,next){
-  req.session.counter = req.session.counter + 1 || 1
-  next()
-  })
-  app.use(require("./middlewares/createMenu.js"))
-
-
-app.use(session({
-  secret: "TV",
+  secret: "Gates",
   cookie:{maxAge:60*1000},
   proxy: true,
   resave: true,
-  saveUninitialized: true
-  }))
-  
+  saveUninitialized: true,
+  store: MongoStore.create({mongoUrl:'mongodb://localhost/gate_2024'})
+}))
+app.use(function(req,res,next){
+  req.session.counter = req.session.counter + 1 || 1
+  next()
+})
+app.use(require("./middlewares/createMenu.js"))
+app.use(require("./middlewares/createUser.js"))
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -71,7 +61,6 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
   res.render('error',{title: 'Tvs'});
 });
 
